@@ -1,0 +1,30 @@
+
+# Java / Maven
+backend/target/
+**/target/
+*.class
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+# IntelliJ
+.idea/
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+application-local.properties
+application-secret.properties
+
+# Logs
+*.log
+
+# Operating system
+.DS_Store
+Thumbs.db

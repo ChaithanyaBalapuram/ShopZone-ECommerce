@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ShopZone - an Amazon-inspired demo shopping experience.">
+  <title>ShopZone | Online Shopping</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js" defer></script><script src="js/store.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="top-strip">Great deals, everyday. <strong>Free delivery</strong> on eligible orders.</div>
+
+  <header class="site-header">
+    <div class="header-main">
+      <a class="brand" href="#" aria-label="ShopZone home">shop<span>zone</span><small>.in</small></a>
+
+      <button class="location header-action" type="button" aria-label="Delivery location">
+        <span class="location-icon">⌖</span>
+        <span><small>Deliver to</small><strong>India</strong></span>
+      </button>
+
+      <form class="search-form" id="searchForm" role="search">
+        <label class="sr-only" for="searchInput">Search products</label>
+        <select id="searchCategory" aria-label="Search category">
+          <option value="all">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="fashion">Fashion</option>
+          <option value="home">Home</option>
+          <option value="books">Books</option>
+        </select>
+        <input id="searchInput" type="search" placeholder="Search ShopZone" autocomplete="off">
+        <button type="submit" aria-label="Search">⌕</button>
+      </form>
+
+      <a class="account header-action" href="pages/profile.html">
+        <small data-user-greeting>Hello, sign in</small><strong>Account & Lists</strong>
+      </a>
+      <a class="orders header-action" href="pages/orders.html"><small>Returns</small><strong>& Orders</strong></a>
+      <a class="cart-button" href="pages/cart.html" aria-label="Shopping cart">
+        <span class="cart-icon">🛒</span><span class="cart-count" id="cartCount" data-cart-count>0</span><strong>Cart</strong>
+      </a>
+    </div>
+
+    <nav class="category-nav" aria-label="Main navigation">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false">☰ <span>All</span></button>
+      <a href="#deals">Today's Deals</a>
+      <a href="#products" data-filter-link="electronics">Electronics</a>
+      <a href="#products" data-filter-link="fashion">Fashion</a>
+      <a href="#products" data-filter-link="home">Home & Kitchen</a>
+      <a href="#products" data-filter-link="books">Books</a>
+      <a href="pages/wishlist.html">Wishlist</a>
+      <a href="#footer">Customer Service</a>
+      <span class="nav-highlight">Mega Shopping Festival is live!</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Featured offer">
+      <div class="hero-content">
+        <p class="eyebrow">THE BIG SHOPPING EVENT</p>
+        <h1>Make room for<br><span>better choices.</span></h1>
+        <p>Discover everyday essentials, smart tech and little upgrades you'll love.</p>
+        <a class="primary-button" href="#deals">Explore today's deals <span>→</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+        <div class="hero-product">🎧</div>
+        <div class="hero-tag">UP TO <strong>50% OFF</strong></div>
+        <div class="hero-spark spark-one">✦</div><div class="hero-spark spark-two">✧</div>
+      </div>
+      <div class="hero-dots"><span class="active"></span><span></span><span></span></div>
+    </section>
+
+    <section class="quick-categories section-wrap" aria-label="Shop by category">
+      <div class="section-heading">
+        <div><p class="eyebrow">FIND YOUR NEXT FAVOURITE</p><h2>Shop by category</h2></div>
+        <a href="#products" class="text-link">See all categories →</a>
+      </div>
+      <div class="category-grid">
+        <button class="category-tile" data-category="electronics"><span class="category-emoji">📱</span><strong>Electronics</strong><small>Gadgets & more</small></button>
+        <button class="category-tile" data-category="fashion"><span class="category-emoji">👟</span><strong>Fashion</strong><small>Style your day</small></button>
+        <button class="category-tile" data-category="home"><span class="category-emoji">🪴</span><strong>Home & Kitchen</strong><small>Make it yours</small></button>
+        <button class="category-tile" data-category="books"><span class="category-emoji">📚</span><strong>Books</strong><small>Stories & ideas</small></button>
+      </div>
+    </section>
+
+    <section class="deal-banner section-wrap" id="deals">
+      <div><p class="eyebrow">LIMITED-TIME PICKS</p><h2>Little prices.<br>Big possibilities.</h2><p>Handpicked offers for your everyday wishlist.</p></div>
+      <div class="deal-banner-side"><span class="deal-circle">DEALS<br><strong>LIVE</strong></span><a href="#products" class="light-button">Shop the deals →</a></div>
+    </section>
+
+    <section class="products-section section-wrap" id="products">
+      <div class="section-heading product-heading">
+        <div><p class="eyebrow">CURATED FOR YOU</p><h2 id="productsTitle">Popular picks</h2><p class="section-subtitle" id="resultCount">Fresh finds across every category</p></div>
+        <div class="product-controls">
+          <label for="sortSelect">Sort by</label>
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Customer rating</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-row" id="filterRow">
+        <button class="filter-chip active" data-filter="all">All products</button>
+        <button class="filter-chip" data-filter="electronics">Electronics</button>
+        <button class="filter-chip" data-filter="fashion">Fashion</button>
+        <button class="filter-chip" data-filter="home">Home & Kitchen</button>
+        <button class="filter-chip" data-filter="books">Books</button>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite"></div>
+      <div class="empty-state hidden" id="emptyState">
+        <span>🔎</span><h3>No products found</h3><p>Try another search or choose a different category.</p>
+        <button class="primary-button" id="clearSearch">Show all products</button>
+      </div>
+    </section>
+
+    <section class="trust-strip section-wrap">
+      <div><span>🚚</span><p><strong>Delivery made easy</strong><small>Convenient delivery options</small></p></div>
+      <div><span>↩️</span><p><strong>Easy returns</strong><small>Shop with more confidence</small></p></div>
+      <div><span>🔒</span><p><strong>Shopping made safer</strong><small>Your demo experience, your way</small></p></div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <a class="back-top" href="#">Back to top ↑</a>
+    <div class="footer-content">
+      <div><a class="brand footer-brand" href="#">shop<span>zone</span><small>.in</small></a><p>Discover more. Shop smarter.</p></div>
+      <div><h3>Get to know us</h3><a href="#footer">About ShopZone</a><a href="#footer">Careers</a><a href="#footer">Press releases</a></div>
+      <div><h3>Let us help you</h3><a href="#footer">Your account</a><a href="#orders">Your orders</a><a href="#footer">Help centre</a></div>
+      <div><h3>Shop with us</h3><a href="#products">All products</a><a href="#deals">Today's deals</a><a href="#products">New arrivals</a></div>
+    </div>
+    <div class="footer-bottom">© 2026 ShopZone Demo. This is an independent educational project and is not affiliated with Amazon.</div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
